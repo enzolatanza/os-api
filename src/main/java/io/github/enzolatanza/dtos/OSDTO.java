@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.enzolatanza.domain.Cliente;
 import io.github.enzolatanza.domain.OS;
 import io.github.enzolatanza.domain.Tecnico;
+import io.github.enzolatanza.domain.enums.Prioridade;
+import io.github.enzolatanza.domain.enums.Status;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -71,8 +73,8 @@ public class OSDTO implements Serializable {
 		this.dataFechamento = dataFechamento;
 	}
 
-	public Integer getPrioridade() {
-		return prioridade;
+	public Prioridade getPrioridade() {
+		return Prioridade.toEnum(this.prioridade);
 	}
 
 	public void setPrioridade(Integer prioridade) {
@@ -87,8 +89,9 @@ public class OSDTO implements Serializable {
 		this.observacoes = observacoes;
 	}
 
-	public Integer getStatus() {
-		return status;
+	public Status getStatus() {
+		//retorna o status como string com o valor do enum
+		return Status.toEnum(this.status);
 	}
 
 	public void setStatus(Integer status) {
